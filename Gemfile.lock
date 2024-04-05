@@ -1,0 +1,24 @@
+GIT
+  remote: https://github.com/ruby-docx/docx.git
+  revision: c5bcb57b3d21fead105f1c7af8d3881dd31674cc
+  specs:
+    docx (0.8.0)
+      nokogiri (~> 1.13, >= 1.13.0)
+      rubyzip (~> 2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    nokogiri (1.16.3-x64-mingw-ucrt)
+      racc (~> 1.4)
+    racc (1.7.3)
+    rubyzip (2.3.2)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  docx!
+
+BUNDLED WITH
+   2.5.7
