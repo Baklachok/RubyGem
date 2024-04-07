@@ -6,71 +6,46 @@ require "docx"
 module DocxTemplate
   class Error < StandardError; end
 
-  class Replacements
-    attr_accessor :faculty, :work_title, :course_number, :group_number, :student, :study_direction,
-   :advisor_degree, :department_name, :advisor_name, :total_score, :city, :year
+  class BaseReplacements
+    attr_accessor :work_title, :study_direction, :department_name, :city, :year
 
     def initialize
-      @faculty = 'Факультет'
+      # @faculty = 'Факультет'
       @work_title = 'Название работы'
-      @course_number = '№ курса'
-      @group_number = '№ группы'
-      @student = 'Ученик'
+      # @course_number = '№ курса'
+      # @group_number = '№ группы'
+      # @student = 'Ученик'
       @study_direction = 'Название направления подготовки'
-      @advisor_degree = 'Степень научного руководителя '
+      # @advisor_degree = 'Степень научного руководителя '
       @department_name = 'Название кафедры'
-      @advisor_name = 'ФИО научного руководителя'
-      @total_score = 'Суммарный балл'
+      # @advisor_name = 'ФИО научного руководителя'
+      # @total_score = 'Суммарный балл'
       @city = 'Город'
       @year = 'Год'
     end
+  end
 
-    def faculty=(value)
-      @faculty = value
+  class CourseReplacements < BaseReplacements
+    attr_accessor :faculty, :course_number, :group_number, :student, :advisor_degree, :advisor_name, :total_score
+
+    def initialize
+      super
+      @faculty = 'Факультет'
+      @course_number = '№ курса'
+      @group_number = '№ группы'
+      @student = 'Ученик'
+      @advisor_degree = 'Степень научного руководителя '
+      @advisor_name = 'ФИО научного руководителя'
+      @total_score = 'Суммарный балл'
     end
+  end
 
-    def work_title=(value)
-      @work_title = value
-    end
+  class IndividualReplacements < BaseReplacements
+    attr_accessor :topic
 
-    def course_number=(value)
-      @course_number = value
-    end
-
-    def group_number=(value)
-      @group_number = value
-    end
-
-    def student=(value)
-      @student = value
-    end
-
-    def study_direction=(value)
-      @study_direction = value
-    end
-
-    def advisor_degree=(value)
-      @advisor_degree = value
-    end
-
-    def department_name=(value)
-      @department_name = value
-    end
-
-    def advisor_name=(value)
-      @advisor_name = value
-    end
-
-    def total_score=(value)
-      @total_score = value
-    end
-
-    def city=(value)
-      @city = value
-    end
-
-    def year=(value)
-      @year = value
+    def initialize
+      super
+      @topic = 'Тема работы'
     end
   end
 
@@ -84,25 +59,7 @@ module DocxTemplate
     create_template(option)
   end
 
-  def self.replace(filename, name)
-    replacementsClass = Replacements.new
-    replacementsClass.faculty = 'Факультет страданий'
-
-    replacements = {
-      "$1": replacementsClass.faculty,
-      "$2": replacementsClass.work_title,
-      "$3": replacementsClass.course_number,
-      "$4": replacementsClass.group_number,
-      "$5": replacementsClass.student,
-      "$6": replacementsClass.study_direction,
-      "$7": replacementsClass.advisor_degree,
-      "$8": replacementsClass.department_name,
-      "$9": replacementsClass.advisor_name,
-      "#0": replacementsClass.total_score,
-      "#1": replacementsClass.city,
-      "#2": replacementsClass.year
-    }
-
+  def self.replace(filename, name, replacements)
     doc = Docx::Document.open(filename)
     # read_variable_doc = Docx::Document.open("./forVariable.docx")
 
@@ -148,11 +105,35 @@ module DocxTemplate
   def self.create_template(option)
     case option
     when 1
-      replace("./template_course_work.docx", "course_work.docx")
+      replacementsClass = CourseReplacements.new
+      replacements = {
+      "$1": replacementsClass.faculty,
+      "$2": replacementsClass.work_title,
+      "$3": replacementsClass.course_number,
+      "$4": replacementsClass.group_number,
+      "$5": replacementsClass.student,
+      "$6": replacementsClass.study_direction,
+      "$7": replacementsClass.advisor_degree,
+      "$8": replacementsClass.department_name,
+      "$9": replacementsClass.advisor_name,
+      "#0": replacementsClass.total_score,
+      "#1": replacementsClass.city,
+      "#2": replacementsClass.year,
+    }
+      replace("./template_course_work.docx", "course_work.docx", replacements)
     when 2
       replace("./template_graduate_work.docx", "graduate_work.docx")
     when 3
-      replace("./template_individual_work.docx", "individual_work.docx")
+      replacementsClass = IndividualReplacements.new
+      replacements = {
+      "$2": replacementsClass.work_title,
+      "$6": replacementsClass.study_direction,
+      "$8": replacementsClass.department_name,
+      "#1": replacementsClass.city,
+      "#2": replacementsClass.year,
+      '#3': replacementsClass.topic
+    }
+      replace("./template_individual_work.docx", "individual_work.docx", replacements)
     end
   end
 end
