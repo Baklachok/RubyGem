@@ -40,6 +40,63 @@ module DocxTemplate
     end
   end
 
+  class GraduateReplacements < BaseReplacements
+    attr_accessor :group_number, :student, :advisor_degree, :advisor_name, :order_number, :order_date, :due_date_student, :initial_data , :given_data , :solve_problem, :subject_area,
+                  :objective, :approach , :metod_optimize, :norm_contorol_fio, :head_of_department
+
+    def initialize
+      super
+      @group_number = '№ группы'
+      @student = 'Ученик'
+      @advisor_degree = 'Степень научного руководителя '
+      @advisor_name = 'ФИО научного руководителя'
+
+      @order_number = '111-K'
+      @order_date = 'Date'
+      @due_date_student = '«20» 02 2024'
+      @initial_data = 'Входные данные'
+      @given_data = 'ДАНО'
+      @solve_problem = 'Solve'
+      @subject_area = 'структурная схема информационных потоков строительной компании'
+      @objective = 'разработать информационную систему'
+      @approach = 'информационные системы'
+      @metod_optimize = 'на основе математического моделирования'
+      @norm_contorol_fio = 'Д.В. Хроменко'
+      @head_of_department = 'Белявский'
+    end
+  end
+
+  # Направление подготовки - yes study_direction
+  # Название темы – yes work_title
+
+  # ФИО руководителя – yes advisor_name
+  # Должность руководителя – yes  advisor_degree
+  # ФИО студента – yes student
+
+  # Город – yes city
+  # Год – yes year
+
+  # Название кафедры – yes department_name
+
+
+  # Группа – yes group_number
+
+  # Номер приказа – yes order_number
+  # Дата приказа – yes order_date
+  # Срок сдачи студентом законченной работы – yes due_date_student
+  
+  # Исходные данные к работе – yes initial_data
+  # Дано – yes given_data
+  # Решаемая задача – yes solve_problem
+  # Предметная область – yes subject_area
+  # Цель работы – yes objective
+  # Подход – yes approach
+  # Метод оптимизации – yes metod_optimize
+
+  # Нормоконтроль –yes norm_contorol_fio
+  # ФИО заведующего кафедры – yes head_of_department
+ 
+
   class IndividualReplacements < BaseReplacements
     attr_accessor :topic
 
@@ -120,9 +177,33 @@ module DocxTemplate
       "#1": replacementsClass.city,
       "#2": replacementsClass.year,
     }
-      replace("./template_course_work.docx", "course_work.docx", replacements)
+      replace("./template_course_work.docx", "../course_work.docx", replacements)
     when 2
-      replace("./template_graduate_work.docx", "graduate_work.docx")
+      replacementsClass = GraduateReplacements.new
+      replacements = {
+       "$0": replacementsClass.group_number,
+       "$1": replacementsClass.student,
+       "$2": replacementsClass.advisor_degree,
+       "$3": replacementsClass.advisor_name,
+       "$4": replacementsClass.order_number,
+       "$5": replacementsClass.order_date,
+       "$6": replacementsClass.due_date_student,
+       "$7": replacementsClass.initial_data,
+       "$8": replacementsClass.given_data,
+       "$9": replacementsClass.solve_problem,
+       "#0": replacementsClass.subject_area,
+       "#1": replacementsClass.objective,
+       "#2": replacementsClass.approach,
+       "#3": replacementsClass.metod_optimize,
+       "#4": replacementsClass.norm_contorol_fio,
+       "#5": replacementsClass.head_of_department,
+       "#6": replacementsClass.work_title,
+       "#7": replacementsClass.study_direction,
+       "#8": replacementsClass.department_name,
+       "#9": replacementsClass.city,
+       "!0": replacementsClass.year,
+      }
+      replace("./template_graduate_work.docx", "../graduate_work.docx", replacements)
     when 3
       replacementsClass = IndividualReplacements.new
       replacements = {
@@ -133,7 +214,7 @@ module DocxTemplate
       "#2": replacementsClass.year,
       '#3': replacementsClass.topic
     }
-      replace("./template_individual_work.docx", "individual_work.docx", replacements)
+      replace("./template_individual_work.docx", "../individual_work.docx", replacements)
     end
   end
 end
