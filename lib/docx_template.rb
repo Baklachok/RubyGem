@@ -70,7 +70,7 @@ module DocxTemplate
       end
 
       doc.tables.each do |table|
-        last_row = table.rows.last
+        last_row = table.rows.last 
         last_row.cells.each do |cell|
           cell.paragraphs.each do |paragraph|
             paragraph.each_text_run do |text|
