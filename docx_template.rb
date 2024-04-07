@@ -85,7 +85,7 @@ module DocxTemplate
         "#1": self.city,
         "#2": self.year,
       }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "../course_work.docx", replacements)
+      replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "./course_work.docx", replacements)
 
     end
   end
@@ -139,7 +139,7 @@ module DocxTemplate
        "#9": self.city,
        "!0": self.year,
       }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "../graduate_work.docx", replacements)
+      replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "./graduate_work.docx", replacements)
     end
   end
 
@@ -163,7 +163,7 @@ module DocxTemplate
         "#2": self.year,
         '#3': self.topic
       }
-        replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "../individual_work.docx", replacements)
+        replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "./individual_work.docx", replacements)
     end
   end
 
@@ -226,7 +226,7 @@ module DocxTemplate
       "#1": replacementsClass.city,
       "#2": replacementsClass.year,
     }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "../course_work.docx", replacements)
+      replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "./course_work.docx", replacements)
     when 2
       replacementsClass = GraduateReplacements.new
       replacements = {
@@ -252,7 +252,7 @@ module DocxTemplate
        "#9": replacementsClass.city,
        "!0": replacementsClass.year,
       }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "../graduate_work.docx", replacements)
+      replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "./graduate_work.docx", replacements)
     when 3
       replacementsClass = IndividualReplacements.new
       replacements = {
@@ -263,7 +263,7 @@ module DocxTemplate
       "#2": replacementsClass.year,
       '#3': replacementsClass.topic
     }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "../individual_work.docx", replacements)
+      replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "./individual_work.docx", replacements)
     end
   end
 end
