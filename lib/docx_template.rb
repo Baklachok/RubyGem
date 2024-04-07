@@ -10,18 +10,11 @@ module DocxTemplate
     attr_accessor :work_title, :study_direction, :department_name, :city, :year
 
     def initialize
-      # @faculty = 'Факультет'
-      @work_title = 'Название работы'
-      # @course_number = '№ курса'
-      # @group_number = '№ группы'
-      # @student = 'Ученик'
-      @study_direction = 'Название направления подготовки'
-      # @advisor_degree = 'Степень научного руководителя '
-      @department_name = 'Название кафедры'
-      # @advisor_name = 'ФИО научного руководителя'
-      # @total_score = 'Суммарный балл'
-      @city = 'Город'
-      @year = 'Год'
+      @work_title = ' '
+      @study_direction = '01.03.02 Прикладная математика и информатика'
+      @department_name = 'Теории упругости'
+      @city = 'Ростов-на-Дону'
+      @year = Time.now.strftime("%Y")
     end
 
     def replace(filename, name, replacements)
@@ -49,7 +42,6 @@ module DocxTemplate
             end
           end
         end
-      # end
   
       doc.save(name)
       true
@@ -61,13 +53,13 @@ module DocxTemplate
 
     def initialize
       super
-      @faculty = 'Факультет'
-      @course_number = '№ курса'
-      @group_number = '№ группы'
-      @student = 'Ученик'
-      @advisor_degree = 'Степень научного руководителя '
-      @advisor_name = 'ФИО научного руководителя'
-      @total_score = 'Суммарный балл'
+      @faculty = 'Мехмат'
+      @course_number = '3'
+      @group_number = '5'
+      @student = 'Пивоваров Дмитрий Юрьевич'
+      @advisor_degree = 'Профессор'
+      @advisor_name = 'Мнухин Роман Михайлович'
+      @total_score = '100'
     end
     
     def create_word_file()
@@ -96,23 +88,23 @@ module DocxTemplate
 
     def initialize
       super
-      @group_number = '№ группы'
-      @student = 'Ученик'
-      @advisor_degree = 'Степень научного руководителя '
-      @advisor_name = 'ФИО научного руководителя'
+      @group_number = '1'
+      @student = 'Иванов Иван Иванович'
+      @advisor_degree = 'Профессор'
+      @advisor_name = 'Мнухин Роман Михайлович'
 
       @order_number = '111-K'
-      @order_date = 'Date'
-      @due_date_student = '«20» 02 2024'
-      @initial_data = 'Входные данные'
-      @given_data = 'ДАНО'
-      @solve_problem = 'Solve'
-      @subject_area = 'структурная схема информационных потоков строительной компании'
-      @objective = 'разработать информационную систему'
-      @approach = 'информационные системы'
-      @metod_optimize = 'на основе математического моделирования'
+      @order_date = Time.now.strftime("%d.%m.%Y")
+      @due_date_student = Time.now.strftime("«%d» %m %Y")
+      @initial_data = ' '
+      @given_data = ' '
+      @solve_problem = ' '
+      @subject_area = ''
+      @objective = ' '
+      @approach = ' '
+      @metod_optimize = 'И так сойдет'
       @norm_contorol_fio = 'Д.В. Хроменко'
-      @head_of_department = 'Белявский'
+      @head_of_department = 'Белявский Г. И.'
     end
 
     def create_word_file()
@@ -151,7 +143,7 @@ module DocxTemplate
 
     def initialize
       super
-      @topic = 'Тема работы'
+      @topic = ' '
     end
     
     def create_word_file()
@@ -202,7 +194,6 @@ module DocxTemplate
           end
         end
       end
-    # end
 
     doc.save(name)
     true
