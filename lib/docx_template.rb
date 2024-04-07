@@ -158,103 +158,103 @@ module DocxTemplate
         replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "./individual_work.docx", replacements)
     end
   end
-
-  # Your code goes here...
-  def self.start
-    puts "Please choose option
-    1)course_work
-    2)graduate_work
-    3)individual_work"
-    option = gets.chomp.to_i
-    create_template(option)
-  end
-
-  def self.replace(filename, name, replacements)
-    doc = Docx::Document.open(filename)
-
-
-      doc.paragraphs.each do |p|
-
-        p.each_text_run do |tr|
-          if(replacements.keys.include?(tr.to_s.to_sym))
-            tr.substitute(tr.to_s, replacements[tr.to_s.to_sym])
-          end
-        end
-      end
-
-      doc.tables.each do |table|
-        last_row = table.rows.last
-        last_row.cells.each do |cell|
-          cell.paragraphs.each do |paragraph|
-            paragraph.each_text_run do |text|
-              if(replacements.keys.include?(text.to_s.to_sym))
-                text.substitute(text.to_s, replacements[text.to_s.to_sym])
-              end
-            end
-          end
-        end
-      end
-
-    doc.save(name)
-    true
-  end
-
-  def self.create_template(option)
-    case option
-    when 1
-      replacementsClass = CourseReplacements.new
-      replacements = {
-      "$1": replacementsClass.faculty,
-      "$2": replacementsClass.work_title,
-      "$3": replacementsClass.course_number,
-      "$4": replacementsClass.group_number,
-      "$5": replacementsClass.student,
-      "$6": replacementsClass.study_direction,
-      "$7": replacementsClass.advisor_degree,
-      "$8": replacementsClass.department_name,
-      "$9": replacementsClass.advisor_name,
-      "#0": replacementsClass.total_score,
-      "#1": replacementsClass.city,
-      "#2": replacementsClass.year,
-    }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "./course_work.docx", replacements)
-    when 2
-      replacementsClass = GraduateReplacements.new
-      replacements = {
-       "$0": replacementsClass.group_number,
-       "$1": replacementsClass.student,
-       "$2": replacementsClass.advisor_degree,
-       "$3": replacementsClass.advisor_name,
-       "$4": replacementsClass.order_number,
-       "$5": replacementsClass.order_date,
-       "$6": replacementsClass.due_date_student,
-       "$7": replacementsClass.initial_data,
-       "$8": replacementsClass.given_data,
-       "$9": replacementsClass.solve_problem,
-       "#0": replacementsClass.subject_area,
-       "#1": replacementsClass.objective,
-       "#2": replacementsClass.approach,
-       "#3": replacementsClass.metod_optimize,
-       "#4": replacementsClass.norm_contorol_fio,
-       "#5": replacementsClass.head_of_department,
-       "#6": replacementsClass.work_title,
-       "#7": replacementsClass.study_direction,
-       "#8": replacementsClass.department_name,
-       "#9": replacementsClass.city,
-       "!0": replacementsClass.year,
-      }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "./graduate_work.docx", replacements)
-    when 3
-      replacementsClass = IndividualReplacements.new
-      replacements = {
-      "$2": replacementsClass.work_title,
-      "$6": replacementsClass.study_direction,
-      "$8": replacementsClass.department_name,
-      "#1": replacementsClass.city,
-      "#2": replacementsClass.year,
-      '#3': replacementsClass.topic
-    }
-      replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "./individual_work.docx", replacements)
-    end
-  end
 end
+  # Your code goes here...
+  # def self.start
+  #   puts "Please choose option
+  #   1)course_work
+  #   2)graduate_work
+  #   3)individual_work"
+  #   option = gets.chomp.to_i
+  #   create_template(option)
+  # end
+
+  # def self.replace(filename, name, replacements)
+  #   doc = Docx::Document.open(filename)
+
+
+  #     doc.paragraphs.each do |p|
+
+  #       p.each_text_run do |tr|
+  #         if(replacements.keys.include?(tr.to_s.to_sym))
+  #           tr.substitute(tr.to_s, replacements[tr.to_s.to_sym])
+  #         end
+  #       end
+  #     end
+
+  #     doc.tables.each do |table|
+  #       last_row = table.rows.last
+  #       last_row.cells.each do |cell|
+  #         cell.paragraphs.each do |paragraph|
+  #           paragraph.each_text_run do |text|
+  #             if(replacements.keys.include?(text.to_s.to_sym))
+  #               text.substitute(text.to_s, replacements[text.to_s.to_sym])
+  #             end
+  #           end
+  #         end
+  #       end
+  #     end
+
+  #   doc.save(name)
+  #   true
+  # end
+
+#   def self.create_template(option)
+#     case option
+#     when 1
+#       replacementsClass = CourseReplacements.new
+#       replacements = {
+#       "$1": replacementsClass.faculty,
+#       "$2": replacementsClass.work_title,
+#       "$3": replacementsClass.course_number,
+#       "$4": replacementsClass.group_number,
+#       "$5": replacementsClass.student,
+#       "$6": replacementsClass.study_direction,
+#       "$7": replacementsClass.advisor_degree,
+#       "$8": replacementsClass.department_name,
+#       "$9": replacementsClass.advisor_name,
+#       "#0": replacementsClass.total_score,
+#       "#1": replacementsClass.city,
+#       "#2": replacementsClass.year,
+#     }
+#       replace("#{File.dirname(File.expand_path(__FILE__))}/template_course_work.docx", "./course_work.docx", replacements)
+#     when 2
+#       replacementsClass = GraduateReplacements.new
+#       replacements = {
+#        "$0": replacementsClass.group_number,
+#        "$1": replacementsClass.student,
+#        "$2": replacementsClass.advisor_degree,
+#        "$3": replacementsClass.advisor_name,
+#        "$4": replacementsClass.order_number,
+#        "$5": replacementsClass.order_date,
+#        "$6": replacementsClass.due_date_student,
+#        "$7": replacementsClass.initial_data,
+#        "$8": replacementsClass.given_data,
+#        "$9": replacementsClass.solve_problem,
+#        "#0": replacementsClass.subject_area,
+#        "#1": replacementsClass.objective,
+#        "#2": replacementsClass.approach,
+#        "#3": replacementsClass.metod_optimize,
+#        "#4": replacementsClass.norm_contorol_fio,
+#        "#5": replacementsClass.head_of_department,
+#        "#6": replacementsClass.work_title,
+#        "#7": replacementsClass.study_direction,
+#        "#8": replacementsClass.department_name,
+#        "#9": replacementsClass.city,
+#        "!0": replacementsClass.year,
+#       }
+#       replace("#{File.dirname(File.expand_path(__FILE__))}/template_graduate_work.docx", "./graduate_work.docx", replacements)
+#     when 3
+#       replacementsClass = IndividualReplacements.new
+#       replacements = {
+#       "$2": replacementsClass.work_title,
+#       "$6": replacementsClass.study_direction,
+#       "$8": replacementsClass.department_name,
+#       "#1": replacementsClass.city,
+#       "#2": replacementsClass.year,
+#       '#3': replacementsClass.topic
+#     }
+#       replace("#{File.dirname(File.expand_path(__FILE__))}/template_individual_work.docx", "./individual_work.docx", replacements)
+#     end
+#   end
+

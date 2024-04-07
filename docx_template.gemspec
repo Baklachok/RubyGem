@@ -5,11 +5,11 @@ require_relative "lib/docx_template/version"
 Gem::Specification.new do |spec|
   spec.name = "docx_template"
   spec.version = DocxTemplate::VERSION
-  spec.authors = ["vanekot322","darklord","baklachok","anna","hottubsenjoyer"]
-  spec.email = ["32194298-vanekot322@users.noreply.replit.com"]
+  spec.authors = ["Anna Gasparyan","Dmitriy Pivovarov","Daniil Korobko","Grigory Grigoriev","Arseniy Lavronov"]
+  spec.email = ["https://github.com/Baklachok/RubyGem"]
 
-  spec.summary = "a"
-  spec.description = "aa"
+  spec.summary = "Gem for Ruby to work with work templates"
+  spec.description = "Templates for coursework, graduation and individual work"
   spec.homepage = "https://github.com/Baklachok/RubyGem"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Baklachok/RubyGem"
-  spec.metadata["changelog_uri"] = "https://github.com/Baklachok/RubyGem"
+  spec.metadata["changelog_uri"] = "https://github.com/Baklachok/RubyGem/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

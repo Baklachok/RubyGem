@@ -1,10 +1,15 @@
 # DocxTemplate
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/docx_template`. To experiment with that code, run `bin/console` for an interactive prompt.
+In this gem, 3 classes of templates are available for creating completed work. Each class has fields responsible for filling data.
 
 ## Installation
+
+$ gem install bundler
+$ bundle init
+Fill Gemfile with:
+gem 'docx_template', :git => 'https://github.com/Baklachok/RubyGem.git'
+$ bundle install
+and use it 
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
@@ -17,8 +22,39 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
 
 ## Usage
-
-TODO: Write usage instructions here
+All classes have these fields (default values):
+    work_title = ' '
+    study_direction = '01.03.02 Прикладная математика и информатика'
+    department_name = 'Теории упругости'
+    city = 'Ростов-на-Дону'
+    year = Time.now.strftime("%Y")
+Class CourseReplacements fields (default value):
+    faculty = 'Мехмат'
+    course_number = '3'
+    group_number = '5'
+    student = 'Пивоваров Дмитрий Юрьевич'
+    advisor_degree = 'Профессор'
+    advisor_name = 'Мнухин Роман Михайлович'
+    total_score = '100'
+Class IndividualReplacements fields (default value):
+    topic = ' '
+Class GraduateReplacements fields (default value):
+    group_number = '1'
+    student = 'Иванов Иван Иванович'
+    advisor_degree = 'Профессор'
+    advisor_name = 'Мнухин Роман Михайлович'
+    order_number = '111-K'
+    order_date = Time.now.strftime("%d.%m.%Y")
+    due_date_student = Time.now.strftime("«%d» %m %Y")
+    initial_data = ' '
+    given_data = ' '
+    solve_problem = ' '
+    subject_area = ''
+    objective = ' '
+    approach = ' '
+    metod_optimize = 'И так сойдет'
+    norm_contorol_fio = 'Д.В. Хроменко'
+    head_of_department = 'Белявский Г. И.'
 
 ## Development
 
