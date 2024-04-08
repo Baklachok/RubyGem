@@ -28,6 +28,7 @@ All classes have these fields (default values):
     department_name = 'Теории упругости'  
     city = 'Ростов-на-Дону'  
     year = Time.now.strftime("%Y")  
+
 Class CourseReplacements fields (default value):  
     faculty = 'Мехмат'  
     course_number = '3'  
@@ -36,8 +37,10 @@ Class CourseReplacements fields (default value):
     advisor_degree = 'Профессор'  
     advisor_name = 'Мнухин Роман Михайлович'  
     total_score = '100'  
+
 Class IndividualReplacements fields (default value):  
     topic = ' '  
+
 Class GraduateReplacements fields (default value):  
     group_number = '1'  
     student = 'Иванов Иван Иванович'  
@@ -55,6 +58,21 @@ Class GraduateReplacements fields (default value):
     metod_optimize = 'И так сойдет'  
     norm_contorol_fio = 'Д.В. Хроменко'  
     head_of_department = 'Белявский Г. И.'  
+
+Examples of crating different files  
+
+$ course_work = DocxTemplate::CourseReplacements.new  
+$ course_work.faculty = 'Институт Математики, Механики и Компьютерных Наук имени И.И. Воровича'  
+$ course_work.create_word_file()  
+
+
+$ individual_work = DocxTemplate::IndividualReplacements.new  
+$ individual_work.year = 2006  
+$ individual_work.create_word_file()  
+
+$ graduate_work = DocxTemplate::GraduateReplacements.new  
+$ graduate_work.approach = 'Наш подход'  
+$ graduate_work.create_word_file()  
 
 ## Development
 
