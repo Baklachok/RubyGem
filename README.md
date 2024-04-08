@@ -61,18 +61,18 @@ Class GraduateReplacements fields (default value):
 
 Examples of crating different files  
 
-$ course_work = DocxTemplate::CourseReplacements.new  
-$ course_work.faculty = 'Институт Математики, Механики и Компьютерных Наук имени И.И. Воровича'  
-$ course_work.create_word_file()  
+`$ course_work = DocxTemplate::CourseReplacements.new`  
+`$ course_work.faculty = 'Институт Математики, Механики и Компьютерных Наук имени И.И. Воровича'`  
+`$ course_work.create_word_file()`  
 
 
-$ individual_work = DocxTemplate::IndividualReplacements.new  
-$ individual_work.year = 2006  
-$ individual_work.create_word_file()  
+`$ individual_work = DocxTemplate::IndividualReplacements.new`  
+`$ individual_work.year = 2006`  
+`$ individual_work.create_word_file()`  
 
-$ graduate_work = DocxTemplate::GraduateReplacements.new  
-$ graduate_work.approach = 'Наш подход'  
-$ graduate_work.create_word_file()  
+`$ graduate_work = DocxTemplate::GraduateReplacements.new`  
+`$ graduate_work.approach = 'Наш подход'`  
+`$ graduate_work.create_word_file()`  
 
 ## Development
 
